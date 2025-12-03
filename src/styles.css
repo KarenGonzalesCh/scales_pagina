@@ -1,4 +1,13 @@
-/* PALETA */
+/* ============================================================
+   PALETA DE COLORES
+   Variables CSS para mantener consistencia visual en todo el sitio
+   ------------------------------------------------------------
+   Parte clave de la identidad visual de SCALES:
+   - Azul oscuro y medio → profundidad
+   - Azul brillo → acento visual
+   - Azul glow → efectos destacados
+   - Texto claro → contraste sobre fondo oscuro
+=============================================================== */
 :root {
     --azul-oscuro: #020b26;
     --azul-medio: #041a3c;
@@ -7,9 +16,22 @@
     --texto-claro: #e8f3ff;
 }
 
-/* RESET */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* ============================================================
+   RESET DE ESTILOS
+   Quita márgenes y paddings predeterminados del navegador
+   Asegura consistencia entre distintos dispositivos y browsers.
+=============================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+/* ============================================================
+   ESTILOS BASE DEL BODY
+   Fondo con gradientes + tipografía Montserrat
+   Este gradiente aporta identidad visual moderna a la marca.
+=============================================================== */
 body {
     font-family: 'Montserrat', sans-serif;
     background: radial-gradient(circle at top right, #0a3d7c55, transparent 40%),
@@ -17,7 +39,15 @@ body {
     color: var(--texto-claro);
 }
 
-/* NAVBAR */
+/* ============================================================
+   NAVBAR FIJA
+   - Siempre visible (position: fixed)
+   - Contiene:
+         · Logotipo (clase .logo)
+         · Menú desktop (.nav-links)
+         · Menú móvil (.menu-btn)
+   - Uso de glassmorphism: blur + fondo semitransparente
+=============================================================== */
 header {
     position: fixed;
     width: 100%;
@@ -30,16 +60,26 @@ header {
 .navbar {
     display: flex;
     justify-content: space-between;
-    padding: 8px 35px;   /* ← reduce altura */
+    padding: 8px 35px;
     align-items: center;
 }
-
 
 .logo {
     font-size: 1.6rem;
     font-weight: 700;
     color: var(--azul-glow);
     text-shadow: 0 0 10px #009dff77;
+}
+
+.logo img {
+    height: 60px;
+    filter: drop-shadow(0 0 6px #009dff88);
+    transition: 0.3s;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 12px #4fb9ffcc);
 }
 
 .nav-links {
@@ -57,7 +97,22 @@ header {
     color: var(--azul-brillo);
 }
 
-/* HERO */
+/* ============================================================
+   BOTÓN MENU MÓVIL
+   Visible solo en pantallas pequeñas
+=============================================================== */
+.menu-btn {
+    display: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: white;
+}
+
+/* ============================================================
+   HERO (PRIMERA DEFINICIÓN)
+   Esta versión fue la inicial, antes de añadir la imagen de fondo.
+   La versión final aparece más abajo y sobrescribe esta.
+=============================================================== */
 .hero {
     text-align: center;
     padding: 180px 40px 120px;
@@ -90,7 +145,9 @@ header {
     box-shadow: 0 0 20px #4fb9ffcc;
 }
 
-/* TITULOS */
+/* ============================================================
+   TITULOS GENERALES (Reutilizados en secciones)
+=============================================================== */
 .section-title {
     text-align: center;
     font-size: 2.5rem;
@@ -105,7 +162,10 @@ header {
     margin-bottom: 40px;
 }
 
-/* SOLUCIONES */
+/* ============================================================
+   SECCIÓN SOLUCIONES
+   Tarjetas con hover + sombras para feedback visual.
+=============================================================== */
 .soluciones {
     padding: 60px 40px;
 }
@@ -138,7 +198,9 @@ header {
     filter: drop-shadow(0 0 8px #009dff77);
 }
 
-/* TRABAJOS */
+/* ============================================================
+   SECCIÓN PROYECTOS (TRABAJOS)
+=============================================================== */
 .trabajos {
     padding: 60px 40px;
 }
@@ -151,183 +213,66 @@ header {
 }
 
 .trabajo-card {
-    width: 300px;
-    background: #041a3ca0;
+    width: 330px;
+    background: rgba(4, 26, 60, 0.75);
     border: 1px solid #009dff33;
-    border-radius: 10px;
+    border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 0 15px #009dff33;
-}
-
-.trabajo-card img {
-    width: 100%;
-}
-
-.trabajo-card h3 {
-    padding: 15px;
-    color: var(--azul-glow);
-}
-
-/* NOSOTRAS */
-.nosotras {
-    padding: 60px 40px;
-}
-
-.nosotras-grid {
-    display: flex;
-    gap: 60px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.persona img {
-    width: 260px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px #009dff55;
-}
-
-.persona h3 {
-    margin-top: 15px;
-    color: var(--azul-glow);
-}
-
-/* IDENTIDAD */
-.identidad {
-    padding: 60px 40px;
-}
-
-.identidad-grid {
-    display: flex;
-    gap: 60px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.identidad-grid div {
-    width: 280px;
-    text-align: center;
-}
-
-.identidad-grid h3 {
-    color: var(--azul-glow);
-    margin-bottom: 10px;
-}
-
-/* CONTACTO */
-.contacto {
-    padding: 60px 40px;
-}
-
-.contacto-form {
-    width: 320px;
-    margin: auto;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    box-shadow: 0 0 20px #009dff22;
+    transition: 0.3s ease;
 }
 
-input, textarea {
-    padding: 12px;
-    background: #041a3ca0;
-    border: 1px solid #009dff44;
-    color: var(--texto-claro);
-    border-radius: 8px;
+.trabajo-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 35px #009dff66;
 }
 
-button {
-    background: var(--azul-brillo);
-    border: none;
-    color: white;
-    padding: 12px;
-    border-radius: 8px;
-    cursor: pointer;
+.trabajo-card .thumb {
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
 }
 
-/* REDES */
-.redes {
-    margin-top: 35px;
-    text-align: center;
-}
-
-.redes-icons {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin-top: 10px;
-}
-
-.redes-icons img {
-    width: 40px;
-    filter: drop-shadow(0 0 6px #009dff88);
-    transition: 0.3s;
-}
-
-.redes-icons img:hover {
-    transform: scale(1.15);
-}
-
-/* FOOTER */
-footer {
+.trabajo-info {
     padding: 20px;
-    text-align: center;
-    background: #031433;
-    border-top: 1px solid #009dff33;
 }
 
-
-
-.logo img {
-    height: 60px;   /* Ajustá acá */
-    filter: drop-shadow(0 0 6px #009dff88);
-    transition: 0.3s;
-}
-
-
-.logo img:hover {
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 12px #4fb9ffcc);
-}
-.footer-logo {
-    width: 80px;
+.trabajo-info h3 {
+    color: var(--azul-glow);
     margin-bottom: 10px;
-    opacity: 0.85;
+    font-size: 1.3rem;
 }
-/* MOBILE MENU */
-.menu-btn {
-    display: none;
-    font-size: 32px;
-    cursor: pointer;
+
+.trabajo-info p {
+    color: #cfe6ff;
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+    text-align: justify;
+}
+
+.btn-card {
+    display: block;
+    margin: 12px auto 0;
+    background: #009dff;
     color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+    box-shadow: 0 0 10px #009dff88;
 }
 
-/* En móviles el menú se oculta */
-@media (max-width: 900px) {
-    .nav-links {
-        position: absolute;
-        top: 70px;
-        right: 0;
-        background: #041a3c;
-        width: 200px;
-        flex-direction: column;
-        display: none;
-        padding: 20px;
-        border-left: 1px solid #009dff55;
-        box-shadow: -4px 0 12px #00000055;
-    }
-
-    .nav-links.open {
-        display: flex;
-    }
-
-    .menu-btn {
-        display: block;
-    }
-
-    .nav-links li {
-        margin: 15px 0;
-    }
+.btn-card:hover {
+    background: #00b7ff;
+    box-shadow: 0 0 20px #00b7ffcc;
 }
-/* TARJETAS NOSOTRAS */
+
+/* ============================================================
+   SECCIÓN NOSOTRAS
+=============================================================== */
 .nosotras {
     padding: 80px 20px;
     text-align: center;
@@ -370,164 +315,63 @@ footer {
     margin-bottom: 10px;
     color: #4fc9ff;
 }
-/* ============================
-   HERO CON IMAGEN DE FONDO
-============================ */
-.hero {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    padding: 0 20px;
 
+/* ============================================================
+   SECCIÓN IDENTIDAD (MISIÓN, VISIÓN, VALORES)
+=============================================================== */
+.identidad {
+    padding: 60px 40px;
+}
+
+.identidad-grid {
     display: flex;
-    flex-direction: column;
+    gap: 60px;
     justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+}
 
+.identidad-grid div {
+    width: 280px;
     text-align: center;
-
-    background-image: url("img/hero-bg.png"); /* ← Tu imagen */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    color: white;
-    overflow: hidden;
 }
 
-/* Capa oscura encima de la imagen */
-.hero::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-
-    background: rgba(0, 0, 35, 0.55);
-    background: linear-gradient(
-        rgba(0, 0, 40, 0.55),
-        rgba(0, 0, 70, 0.65)
-    );
-
-    z-index: 0;
-}
-
-/* Contenido sobre el overlay */
-.hero * {
-    position: relative;
-    z-index: 1;
-}
-
-.hero h1 {
-    font-size: 3.2rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    color: #ffffff;        /* ← AQUI */
-    text-shadow: 0 0 12px #009dff66;
-}
-
-.hero p {
-    font-size: 1.3rem;
-    font-weight: 300;
-    margin-bottom: 25px;
-}
-
-.hero .btn {
-    background: #009dff;
-    padding: 14px 28px;
-    border-radius: 10px;
-
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: 600;
-
-    transition: 0.3s ease;
-    box-shadow: 0 0 15px #009dffaa;
-}
-
-.hero .btn:hover {
-    background: #00b7ff;
-    box-shadow: 0 0 35px #00b7ffcc;
-    transform: translateY(-2px);
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.3rem;
-    }
-    .hero p {
-        font-size: 1rem;
-    }
-}
-
-.justificar {
-    text-align: justify;
-    line-height: 1.6; /* opcional para mejor lectura */
-}
-
-/* -------- TARJETAS DE TRABAJOS MEJORADAS -------- */
-.trabajo-card {
-    width: 330px;
-    background: rgba(4, 26, 60, 0.75);
-    border: 1px solid #009dff33;
-    border-radius: 14px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 0 20px #009dff22;
-    transition: 0.3s ease;
-}
-
-
-.trabajo-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 0 35px #009dff66;
-}
-
-/* Miniatura */
-.trabajo-card .thumb {
-    width: 100%;
-    height: 290px;
-    object-fit: cover;
-}
-
-/* Contenido */
-.trabajo-info {
-    padding: 20px;
-}
-
-.trabajo-info h3 {
+.identidad-grid h3 {
     color: var(--azul-glow);
     margin-bottom: 10px;
-    font-size: 1.3rem;
 }
 
-.trabajo-info p {
-    color: #cfe6ff;
-    font-size: 0.95rem;
-    margin-bottom: 18px;
-    text-align: justify;
+/* ============================================================
+   SECCIÓN CONTACTO + FORMULARIO
+=============================================================== */
+.contacto {
+    padding: 60px 40px;
 }
 
-/* Botón Ver más */
-.btn-card {
-    display: block;        /* ← Ahora ocupa todo el ancho disponible */
-    margin: 12px auto 0;   /* ← Lo centra horizontalmente */
-    background: #009dff;
-    color: white;
-    padding: 10px 16px;
+.contacto-form {
+    width: 320px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, textarea {
+    padding: 12px;
+    background: #041a3ca0;
+    border: 1px solid #009dff44;
+    color: var(--texto-claro);
     border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s ease;
-    box-shadow: 0 0 10px #009dff88;
 }
 
-.btn-card:hover {
-    background: #00b7ff;
-    box-shadow: 0 0 20px #00b7ffcc;
+button {
+    background: var(--azul-brillo);
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
 }
+
 .mensaje-exito {
     margin-top: 20px;
     background: #0a8cff;
@@ -543,4 +387,178 @@ footer {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(5px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   SECCIÓN REDES SOCIALES
+=============================================================== */
+.redes {
+    margin-top: 35px;
+    text-align: center;
+}
+
+.redes-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 10px;
+}
+
+.redes-icons img {
+    width: 40px;
+    filter: drop-shadow(0 0 6px #009dff88);
+    transition: 0.3s;
+}
+
+.redes-icons img:hover {
+    transform: scale(1.15);
+}
+
+/* ============================================================
+   FOOTER
+=============================================================== */
+footer {
+    padding: 20px;
+    text-align: center;
+    background: #031433;
+    border-top: 1px solid #009dff33;
+}
+
+.footer-logo {
+    width: 80px;
+    margin-bottom: 10px;
+    opacity: 0.85;
+}
+
+/* ============================================================
+   HERO VERSIÓN FINAL (SOBREESCRIBE LA ANTERIOR)
+   - Imagen de fondo
+   - Overlay oscuro para contraste
+   - Layout con flexbox centrado
+   - Reemplaza padding por height:100vh
+=============================================================== */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 0 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background-image: url("img/hero-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: white;
+    overflow: hidden;
+}
+
+/* Overlay oscuro */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+
+    background: linear-gradient(
+        rgba(0, 0, 40, 0.55),
+        rgba(0, 0, 70, 0.65)
+    );
+
+    z-index: 0;
+}
+
+/* Contenido por encima del overlay */
+.hero * {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-shadow: 0 0 12px #009dff66;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin-bottom: 25px;
+}
+
+.hero .btn {
+    background: #009dff;
+    padding: 14px 28px;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+    box-shadow: 0 0 15px #009dffaa;
+}
+
+.hero .btn:hover {
+    background: #00b7ff;
+    box-shadow: 0 0 35px #00b7ffcc;
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   - <900px → Navbar móvil
+   - <768px → textos del hero se reducen
+=============================================================== */
+@media (max-width: 900px) {
+
+    /* Menú móvil */
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #041a3c;
+        width: 200px;
+        flex-direction: column;
+        display: none;
+        padding: 20px;
+        border-left: 1px solid #009dff55;
+        box-shadow: -4px 0 12px #00000055;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.3rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+}
+
+/* ============================================================
+   UTILIDADES
+=============================================================== */
+.justificar {
+    text-align: justify;
+    line-height: 1.6;
 }
