@@ -1,4 +1,4 @@
-# 🌐 SCALES — Sitio Web   
+# 🌐 SCALES — Sitio Web Institucional  
 Soluciones Digitales, Automatización y Ciencia de Datos
 
 Este repositorio contiene el sitio web oficial de **SCALES**, un emprendimiento dedicado a la **automatización de procesos**, **aplicaciones empresariales**, **dashboards interactivos** y **soluciones basadas en datos** orientadas a negocios familiares y pymes.
