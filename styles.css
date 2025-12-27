@@ -531,6 +531,7 @@ footer {
         padding: 20px;
         border-left: 1px solid #009dff55;
         box-shadow: -4px 0 12px #00000055;
+        
     }
 
     .nav-links.open {
@@ -542,7 +543,8 @@ footer {
     }
 
     .nav-links li {
-        margin: 15px 0;
+        margin: 5px 0; /* Reducimos de 15px a 5px para que estén más juntos */
+        padding: 5px 0; /* Opcional: un pequeño padding para el área de toque */
     }
 }
 
@@ -561,4 +563,53 @@ footer {
 .justificar {
     text-align: justify;
     line-height: 1.6;
+}
+
+/* ============================================================
+   BOTÓN WHATSAPP FLOTANTE
+   - Siempre visible en la esquina inferior derecha
+   - Acceso rápido a contacto vía WhatsApp
+
+   /* Estilo para el botón flotante de WhatsApp */
+/* Estilo para el botón flotante de WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366; /* Verde oficial de WhatsApp */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    z-index: 1000;
+    transition: 0.3s ease;
+    text-decoration: none;
+}
+
+/* Asegura que la imagen sea blanca y siempre visible */
+.whatsapp-float img {
+    width: 35px;
+    height: 35px;
+    display: block !important;
+    opacity: 1 !important; /* Fuerza la visibilidad */
+    /* Este filtro convierte cualquier color de icono en blanco */
+    filter: brightness(0) invert(1); 
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    background-color: #128c7e;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 768px) {
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+    }
 }

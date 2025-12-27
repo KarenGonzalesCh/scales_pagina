@@ -4,17 +4,26 @@
    toggleMenu()
    - Abre y cierra el menú de navegación en modo móvil.
    - Agrega o remueve la clase .open a .nav-links.
-   ------------------------------------------------------------
-   Nota:
-   Tenías dos funciones toggleMenu() distintas. Esto causaba que
-   la primera fuera sobrescrita. Aquí queda una sola versión bien
-   definida.
+
+=============================================================== */
+/* ============================================================
+   MENÚ MÓVIL (Actualizado para auto-cierre)
 =============================================================== */
 function toggleMenu() {
     const navLinks = document.querySelector('.nav-links');
     navLinks.classList.toggle('open');
 }
 
+// Nueva lógica: Cerrar el menú automáticamente al hacer clic en una opción
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        const navLinks = document.querySelector('.nav-links');
+        // Solo lo cerramos si el menú está abierto (clase 'open' presente)
+        if (navLinks.classList.contains('open')) {
+            navLinks.classList.remove('open');
+        }
+    });
+});
 
 /* ============================================================
    FORMULARIO DE CONTACTO (FormSubmit)
